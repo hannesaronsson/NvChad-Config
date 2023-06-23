@@ -7,8 +7,9 @@ local opts = {
 null_ls.builtins.diagnostics.mypy.with({
   args = function(params)
     local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+    local python_path = virtual .. (package.config:sub(1,1) == '/' and "/bin/python" or "\\python.exe")
     return {
-      "--python-executable=" .. virtual .. "/bin/python",
+      "--python-executable=" .. python_path, 
       "--hide-error-codes",
       "--hide-error-context",
       "--no-color-output",
@@ -24,7 +25,12 @@ null_ls.builtins.diagnostics.mypy.with({
     }
   end,
 }),
+    null_ls.builtins.diagnostics.ruff,
   },
+
+
+
+
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({
