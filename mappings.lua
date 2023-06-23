@@ -24,6 +24,7 @@ M.chatgpt = {
     ["<leader>cgd"] = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" }, -- Docstring
     ["<leader>cgf"] = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs" }, -- Fix bugs
     ["<leader>cgo"] = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code" }, -- Optimize code
+    ["<leader>cgt"] = { "<cmd>ChatGPTRun add_tests<CR>", "Add tests" }, -- Optimize code
     ["<leader>cgc"] = { "<cmd>ChatGPTCompleteCode<CR>", "Complete Code" }, -- Complete code
     ["<leader>cgi"] = {"<cmd>ChatGPTEditWithInstructions<CR>", "Edit with instructions"} -- Edit with instructions
     
@@ -33,6 +34,7 @@ M.chatgpt = {
     ["<leader>cgd"] = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" }, -- Docstring
     ["<leader>cgf"] = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs" }, -- Fix bugs
     ["<leader>cgo"] = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code" }, -- Optimize code
+    ["<leader>cgt"] = { "<cmd>ChatGPTRun add_tests<CR>", "Add tests" }, -- Optimize code
     ["<leader>cgc"] = { "<cmd>ChatGPTCompleteCode<CR>", "Complete Code" }, -- Complete code
     ["<leader>cgi"] = {"<cmd>ChatGPTEditWithInstructions<CR>", "Edit with instructions"} -- Edit with instructions
   },
@@ -41,9 +43,16 @@ M.chatgpt = {
     ["<leader>cgd"] = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" }, -- Docstring
     ["<leader>cgf"] = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs" }, -- Fix bugs
     ["<leader>cgo"] = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code" }, -- Optimize code
+    ["<leader>cgt"] = { "<cmd>ChatGPTRun add_tests<CR>", "Add tests" }, -- Optimize code
     ["<leader>cgc"] = { "<cmd>ChatGPTCompleteCode<CR>", "Complete Code" }, -- Complete code
     ["<leader>cgi"] = {"<cmd>ChatGPTEditWithInstructions<CR>", "Edit with instructions"} -- Edit with instructions
 },
   }
+
+M.conjure = {
+ n = { 
+    ["<leader>re"] = {"<cmd>ConjureEval<CR>", "Eval Code"}, -- Explain code
+  }
+}
 
 return M

@@ -51,7 +51,9 @@ local plugins = {
         "debugpy",
         "ruff-lsp",
         "pyright",
-        "pylint"
+        "pylint",
+        "mypy",
+        "jedi-language-server"
       },
     },
   },
@@ -110,16 +112,76 @@ local plugins = {
     },
 },
   {
+    "Olical/conjure",
+    cmd = {
+        "ConjureEval",
+        "ConjureSchool",
+        "ConjureConnect",
+        "ConjureClientState",
+        --
+        "ConjureLogSplit",
+        "ConjureLogVSplit",
+        "ConjureLogTab",
+        "ConjureLogBuf",
+        "ConjureLogToggle",
+        "ConjureLogResetSoft",
+        "ConjureLogResetHard",
+        "ConjureLogJumpToLatest",
+        "ConjureLogCloseVisible",
+        --
+        "ConjureEvalCurrentForm",
+        "ConjureEvalCommentCurrentForm",
+        "ConjureEvalRootForm",
+        "ConjureEvalCommentRootForm",
+        "ConjureEvalWord",
+        "ConjureEvalCommentWord",
+        "ConjureEvalReplaceForm",
+        "ConjureEvalMarkedForm",
+        "ConjureEvalCommentForm",
+        "ConjureEvalFile",
+        "ConjureEvalBuf",
+        "ConjureEvalMotion",
+        "ConjureEvalVisual",
+    },
+    -- [Optional] cmp-conjure for cmp
+    dependencies = {
+        {
+            "PaterJason/cmp-conjure",
+            config = function()
+                local cmp = require("cmp")
+                local config = cmp.get_config()
+                table.insert(config.sources, {
+                    name = "buffer",
+                    option = {
+                        sources = {
+                            { name = "conjure" },
+                        },
+                    },
+                })
+                cmp.setup(config)
+            end,
+        },
+    },
+    config = function(_, opts)
+        require("conjure.main").main()
+        require("conjure.mapping")["on-filetype"]()
+        require("core.utils").load_mappings("conjure")
+    end,
+    init = function()
+	-- Set configuration options here
+        vim.g["conjure#mapping#prefix"] = "<leader>r"
+    end,
+},
+{
  "folke/trouble.nvim",
  dependencies = { "nvim-tree/nvim-web-devicons" },
+  lazy=false,
  opts = {
+    position = "bottom", -- position of the list can be: bottom, top, left, right
   -- your configuration comes here
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
  },
-},
-  {'Vigemus/iron.nvim', 
-    lazy=false,
-    }
+}
 }
 return plugins

@@ -4,7 +4,26 @@ local null_ls = require('null-ls')
 local opts = {
   sources = {
     null_ls.builtins.formatting.black,
-    -- null_ls.builtins.diagnostics.pylint,
+null_ls.builtins.diagnostics.mypy.with({
+  args = function(params)
+    local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+    return {
+      "--python-executable=" .. virtual .. "/bin/python",
+      "--hide-error-codes",
+      "--hide-error-context",
+      "--no-color-output",
+      "--show-absolute-path",
+      "--show-column-numbers",
+      "--show-error-codes",
+      "--no-error-summary",
+      "--no-pretty",
+      "--shadow-file",
+      params.bufname,
+      params.temp_path,
+      params.bufname,
+    }
+  end,
+}),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
