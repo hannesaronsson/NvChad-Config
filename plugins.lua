@@ -1,4 +1,13 @@
+local overrides = require("custom.configs.overrides")
 local plugins = {
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = overrides.nvimtree,
+  },
+{
+    "nvim-treesitter/nvim-treesitter",
+    opts = overrides.treesitter,
+  },
 {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
