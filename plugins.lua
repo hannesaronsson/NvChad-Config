@@ -1,5 +1,6 @@
 local overrides = require("custom.configs.overrides")
 local plugins = {
+
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
@@ -230,6 +231,29 @@ local plugins = {
   {
     "nvim-telescope/telescope-project.nvim",
     dependencies = {"nvim-telescope/telescope.nvim"},
-  }
+  },
+{
+  "folke/zen-mode.nvim",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+    cmd = {
+      "ZenMode"
+    }
+},
+{
+  "folke/twilight.nvim",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+    cmd = {"Twilight",
+      "TwilightEnable",
+      "TwilightDisable"
+    }
+}
 }
 return plugins
