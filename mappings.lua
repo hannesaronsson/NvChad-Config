@@ -55,4 +55,14 @@ M.conjure = {
   }
 }
 
+M.project_telescope = {
+  n = {
+    ["<leader>tp"] = {
+      function()
+      require'telescope'.extensions.project.project()
+      end
+    }
+  }
+}
+
 return M

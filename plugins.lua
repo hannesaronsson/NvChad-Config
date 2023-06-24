@@ -54,7 +54,8 @@ local plugins = {
         "pyright",
         "pylint",
         "mypy",
-        "jedi-language-server"
+        "jedi-language-server",
+        "lua-language-server"
       },
     },
   },
@@ -68,7 +69,6 @@ local plugins = {
 {
   "folke/flash.nvim",
   event = "VeryLazy",
-  ---@type Flash.Config
   opts = {},
   keys = {
     {
@@ -183,6 +183,44 @@ local plugins = {
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
  },
-}
+},
+  {
+  {
+    "chrishrb/gx.nvim",
+    event = { "BufEnter" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+
+    -- you can specify also another config if you want
+    config = function()
+      local browser_cmd = "open"
+      if vim.fn.has('win32') == 1 then
+          browser_cmd = "powershell.exe start firefox.exe"
+      end 
+      require("gx").setup {
+      open_browser_app = browser_cmd, -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
+      open_browser_args = { "--background" }, -- specify any arguments, such as --background for macOS' "open".
+      handlers = {
+        plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
+        github = true, -- open github issues
+        brewfile = true, -- open Homebrew formulaes and casks
+        package_json = true, -- open dependencies from package.json
+        search = true, -- search the web/selection on the web if nothing else is found
+      },
+      handler_options = {
+        search_engine = "google", -- you can select between google, bing and duckduckgo
+      },
+    } end,
+  },
+},
+{
+   "nvim-treesitter/nvim-treesitter-textobjects",
+  dependencies = {"nvim-treesitter/nvim-treesitter"
+    },
+  lazy=false
+},
+  {
+    "nvim-telescope/telescope-project.nvim",
+    dependencies = {"nvim-telescope/telescope.nvim"},
+  }
 }
 return plugins

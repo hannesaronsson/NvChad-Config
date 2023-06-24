@@ -13,4 +13,10 @@ local lspconfig = require("lspconfig")
 lspconfig.jedi_language_server.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = {"python"},
 })
+
+-- lspconfig.ruff_lsp.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities 
+-- })
