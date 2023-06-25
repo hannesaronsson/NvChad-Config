@@ -182,6 +182,7 @@ local plugins = {
     init = function()
 	-- Set configuration options here
         vim.g["conjure#mapping#prefix"] = "<leader>r"
+        vim.g["conjure#client#python#stdio#command"] = 'python -iq'
     end,
 },
 {
