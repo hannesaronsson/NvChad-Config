@@ -5,6 +5,7 @@ local opts = {
   sources = {
     null_ls.builtins.formatting.black,
 null_ls.builtins.diagnostics.mypy.with({
+      condition = function(utils) return vim.fn.filereadable(vim.fn.expand('%:p')) == 1  end,
   args = function(params)
     local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
     local python_path = virtual .. (package.config:sub(1,1) == '/' and "/bin/python" or "\\python.exe")
