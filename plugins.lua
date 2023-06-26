@@ -89,6 +89,7 @@ local plugins = {
         require("flash").jump()
       end,
     },
+
     {
       "S",
       mode = { "n", "o", "x" },
@@ -113,7 +114,7 @@ local plugins = {
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup(
-      {edit_with_instructions = {keymaps = {use_output_as_input = "<C-b>"}}})
+      {edit_with_instructions = {keymaps = {use_output_as_input = "C-b"}}})
       require("core.utils").load_mappings("chatgpt")
     end,
     dependencies = {
