@@ -21,6 +21,7 @@ vim.api.nvim_exec('language en_US', true)
 
 vim.g.maplocalleader = '<Space>'
 vim.g["conjure.client.python.stdio.command"] = 'python -iq'
+
 local function tab_win_closed(winnr)
   local api = require"nvim-tree.api"
   local tabnr = vim.api.nvim_win_get_tabpage(winnr)
@@ -56,3 +57,4 @@ vim.api.nvim_create_autocmd("WinClosed", {
   end,
   nested = true
 })
+

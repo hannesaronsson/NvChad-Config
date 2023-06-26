@@ -12,6 +12,7 @@ lspconfig.pyright.setup({
   capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
   return capabilities
   end)(),
+  root_dir = require("lspconfig").util.root_pattern(".git","pyrightconfig.json"),
   filetypes = {"python"},
 })
 
@@ -21,6 +22,7 @@ lspconfig.ruff_lsp.setup({
   client.server_capabilities.hoverProvider = false
   require("plugins.configs.lspconfig").on_attach(client, bufnr)
   end,
+  root_dir = require("lspconfig").util.root_pattern(".git","pyrightconfig.json"),
   capabilities = capabilities
 })
 

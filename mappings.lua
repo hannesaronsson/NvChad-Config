@@ -71,4 +71,25 @@ M.project_telescope = {
   }
 }
 
+M.comment = {
+  plugin = true,
+
+  -- toggle comment in both modes
+  n = {
+    ["<leader>7"] = {
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      "Toggle comment",
+    },
+  },
+
+  v = {
+    ["<leader>7"] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "Toggle comment",
+    },
+  },
+}
+
 return M

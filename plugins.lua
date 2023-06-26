@@ -299,7 +299,42 @@ local plugins = {
     cmd = {
       "Neogit",
       "Neogit commit"
-    } 
-  }
+    }
+  },
+{
+  "folke/todo-comments.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  config = function ()
+      require("todo-comments").setup({})
+  end,
+  cmd = {
+      "TodoTrouble"
+    },
+  lazy = false
+},
+{
+    'mechatroner/rainbow_csv',
+    config = true,
+    ft = {
+        'csv',
+        'tsv',
+        'csv_semicolon',
+        'csv_whitespace',
+        'csv_pipe',
+        'rfc_csv',
+        'rfc_semicolon'
+    },
+    cmd = {
+        'RainbowDelim',
+        'RainbowDelimSimple',
+        'RainbowDelimQuoted',
+        'RainbowMultiDelim'
+    }
+},
 }
 return plugins
