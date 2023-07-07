@@ -83,16 +83,31 @@ local plugins = {
   keys = {
     {
       "s",
-      mode = { "n", "x", "o" },
+      mode = { "n", "x", "o"},
       function()
         -- default options: exact mode, multi window, all directions, with a backdrop
         require("flash").jump()
       end,
     },
+--       {
+--       "z",
+--       mode = { "o" },
+--       function()
+--         -- default options: exact mode, multi window, all directions, with a backdrop
+--         require("flash").jump()
+--       end,
+--     },
+-- {
+--       "Z",
+--       mode = { "o" },
+--       function()
+--         require("flash").treesitter()
+--       end,
+--     },
 
     {
       "S",
-      mode = { "n", "o", "x" },
+      mode = { "n", "x", "o" },
       function()
         require("flash").treesitter()
       end,
@@ -105,16 +120,27 @@ local plugins = {
     event = "VeryLazy",
     config = function()
         require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-},
+            keymaps = {
+        insert = "<C-g>z",
+        insert_line = "<C-g>Z",
+        normal = "yz",
+        normal_cur = "yzz",
+        normal_line = "yZ",
+        normal_cur_line = "yZZ",
+        visual = "Z",
+        visual_line = "gZ",
+        delete = "dz",
+        change = "cz",
+        change_line = "cZ",
+    }})
+    end,
+  },
 {
   "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup(
-      {edit_with_instructions = {keymaps = {use_output_as_input = "C-b"}}})
+      {edit_with_instructions = {keymaps = {use_output_as_input = "<C-b>"}}})
       require("core.utils").load_mappings("chatgpt")
     end,
     dependencies = {
