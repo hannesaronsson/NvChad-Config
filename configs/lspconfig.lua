@@ -14,6 +14,11 @@ lspconfig.pyright.setup({
   end)(),
   root_dir = require("lspconfig").util.root_pattern(".git","pyrightconfig.json"),
   filetypes = {"python"},
+  settings ={python = {
+    analysis = {
+    stubPath = vim.fn.has('win32') == 1 and vim.fn.stdpath("data") .. "\\lazy\\python-type-stubs\\stubs" or vim.fn.stdpath("data") .. "/lazy/python-type-stubs",
+    }}
+  },
 })
 
 
