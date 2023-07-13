@@ -372,6 +372,7 @@ local plugins = {
   ,
   {
     "microsoft/python-type-stubs",
+    pin = true,
 }
 }
 return plugins
