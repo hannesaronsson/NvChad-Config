@@ -65,7 +65,8 @@ local plugins = {
         "pylint",
         "mypy",
         "jedi-language-server",
-        "lua-language-server"
+        "lua-language-server",
+       "css-lsp" ,
       },
     },
   },

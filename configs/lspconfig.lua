@@ -31,6 +31,23 @@ lspconfig.ruff_lsp.setup({
   capabilities = capabilities
 })
 
+lspconfig.rnix.setup({
+  on_attach = function(client, bufnr)
+  client.server_capabilities.hoverProvider = false
+  require("plugins.configs.lspconfig").on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = {"nix"},
+})
+
+
+lspconfig.css_lsp.setup({
+  on_attach = function(client, bufnr)
+  client.server_capabilities.hoverProvider = false
+  require("plugins.configs.lspconfig").on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+})
 -- lspconfig.jedi_language_server.setup({
 --   on_attach = on_attach,
 --   capabilities = capabilities,
