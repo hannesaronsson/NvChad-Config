@@ -6,7 +6,7 @@ if vim.fn.has('win32') == 1 then
   vim.api.nvim_set_option("shellxquote", "")
 end
 vim.api.nvim_exec("set rnu", true)
-vim.api.nvim_exec('language en_US', true)
+-- vim.api.nvim_exec('language en_US', true)
 
 -- vim.g.loaded_python3_provider = 1
 

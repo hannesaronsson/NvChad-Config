@@ -47,6 +47,7 @@ lspconfig.css_lsp.setup({
   require("plugins.configs.lspconfig").on_attach(client, bufnr)
   end,
   capabilities = capabilities,
+  filetypes = {"css", "scss"},
 })
 -- lspconfig.jedi_language_server.setup({
 --   on_attach = on_attach,
