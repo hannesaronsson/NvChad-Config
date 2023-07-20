@@ -31,24 +31,33 @@ lspconfig.ruff_lsp.setup({
   capabilities = capabilities
 })
 
+
+
 lspconfig.rnix.setup({
-  on_attach = function(client, bufnr)
-  client.server_capabilities.hoverProvider = false
-  require("plugins.configs.lspconfig").on_attach(client, bufnr)
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd [[augroup Format]]
+        vim.cmd [[autocmd! * <buffer>]]
+        vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+        vim.cmd [[augroup END]]
+    end
+    require("plugins.configs.lspconfig").on_attach(client, bufnr)
   end,
-  capabilities = capabilities,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()), -- Assuming you are using nvim-cmp for completion
   filetypes = {"nix"},
 })
 
 
-lspconfig.css_lsp.setup({
-  on_attach = function(client, bufnr)
-  client.server_capabilities.hoverProvider = false
-  require("plugins.configs.lspconfig").on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = {"css", "scss"},
-})
+
+
+-- lspconfig.css_lsp.setup({
+--   on_attach = function(client, bufnr)
+--   client.server_capabilities.hoverProvider = false
+--   require("plugins.configs.lspconfig").on_attach(client, bufnr)
+--   end,
+--   capabilities = capabilities,
+--   filetypes = {"css", "scss"},
+-- })
 -- lspconfig.jedi_language_server.setup({
 --   on_attach = on_attach,
 --   capabilities = capabilities,
