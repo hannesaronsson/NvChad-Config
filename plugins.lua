@@ -321,7 +321,16 @@ local plugins = {
 -- },
   { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim', 
     config = function() 
-      require("neogit").setup({}) 
+      require("neogit").setup({
+kind = "split", -- opens neogit in a split 
+   signs = {
+    -- { CLOSED, OPENED }
+    section = { "", "" },
+    item = { "", "" },
+    hunk = { "", "" },
+   },
+   integrations = { diffview = true }, -- adds integration with diffview.nvim
+  })
     end,
     cmd = {
       "Neogit",
@@ -374,6 +383,12 @@ local plugins = {
   {
     "microsoft/python-type-stubs",
     pin = true,
-}
-}
+},
+  {
+  "sindrets/diffview.nvim",
+  lazy = false,
+    config =function ()
+      require('diffview').setup({})
+    end,
+}}
 return plugins
