@@ -6,6 +6,19 @@ if vim.fn.has('win32') == 1 then
   vim.api.nvim_set_option("shellxquote", "")
 end
 vim.api.nvim_exec("set rnu", true)
+vim.g.clipboard = {
+    name = 'win32yank-wsl',
+    copy = {
+        ['+'] = '/mnt/c/Users/harc6k/Executables/win32yank.exe -i --crlf',
+        ['*'] = '/mnt/c/Users/harc6k/Executables/win32yank.exe -i --crlf',
+    },
+    paste = {
+        ['+'] = '/mnt/c/Users/harc6k/Executables/win32yank.exe -o --lf',
+        ['*'] = '/mnt/c/Users/harc6k/Executables/win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+}
+
 -- vim.api.nvim_exec('language en_US', true)
 
 -- vim.g.loaded_python3_provider = 1

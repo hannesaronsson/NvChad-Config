@@ -16,7 +16,7 @@ lspconfig.pyright.setup({
   filetypes = {"python"},
   settings ={python = {
     analysis = {
-    stubPath = vim.fn.has('win32') == 1 and vim.fn.stdpath("data") .. "\\lazy\\python-type-stubs\\stubs" or vim.fn.stdpath("data") .. "/lazy/python-type-stubs",
+    stubPath = vim.fn.has('win32') == 1 and vim.fn.stdpath("data") .. "\\lazy\\python-type-stubs\\stubs" or vim.fn.stdpath("data") .. "/lazy/python-type-stubs/stubs",
     }}
   },
 })

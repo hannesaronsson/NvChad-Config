@@ -1,6 +1,9 @@
 local overrides = require("custom.configs.overrides")
 local plugins = {
-
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp
+  },
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
@@ -372,14 +375,14 @@ kind = "split", -- opens neogit in a split
         'RainbowMultiDelim'
     }
 },
-  {
-    'karb94/neoscroll.nvim',
-    config =function ()
-      require('neoscroll').setup({})
-    end,
-    lazy = false
-  }
-  ,
+  -- {
+  --   'karb94/neoscroll.nvim',
+  --   config =function ()
+  --     require('neoscroll').setup({})
+  --   end,
+  --   lazy = false
+  -- }
+  -- ,
   {
     "microsoft/python-type-stubs",
     pin = true,
