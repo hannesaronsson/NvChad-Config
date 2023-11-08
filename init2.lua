@@ -25,10 +25,10 @@ vim.g.clipboard = {
 }
 
 
-local overrides = {}
+local overrides2 = {}
 
 
-overrides.treesitter = {
+overrides2.treesitter = {
   ensure_installed = {
     "vim",
     "lua",
@@ -85,22 +85,6 @@ local plugins = {
               require("flash").jump()
             end,
           },
-      --       {
-      --       "z",
-      --       mode = { "o" },
-      --       function()
-      --         -- default options: exact mode, multi window, all directions, with a backdrop
-      --         require("flash").jump()
-      --       end,
-      --     },
-      -- {
-      --       "Z",
-      --       mode = { "o" },
-      --       function()
-      --         require("flash").treesitter()
-      --       end,
-      --     },
-      
           {
             "S",
             mode = { "n", "x", "o" },
@@ -131,16 +115,16 @@ local plugins = {
         }})
         end,
       },
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-       dependencies = {"nvim-treesitter/nvim-treesitter"
-         },
-       lazy=false
-     },
   {
       "nvim-treesitter/nvim-treesitter",
-      opts = overrides.treesitter,
+      opts = overrides2.treesitter,
     }, 
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+       dependencies = {"nvim-treesitter/nvim-treesitter"},
+       lazy=false,
+       config =function() require('nvim-treesitter.configs').setup(overrides2.treesitter) end
+     },
 } 
 
 vim.g.mapleader = " "
